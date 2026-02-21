@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn About That Site | ওই সাইট সম্পর্কে জানুন</title>
+    <link rel="icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c4/Globe_icon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #8b5cf6;
+            --secondary: #6366f1;
+            --accent: #10b981;
+            --dark-bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --border: rgba(255, 255, 255, 0.1);
+            --gold: #fbbf24;
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            background-image:
+                radial-gradient(circle at 0% 0%, rgba(139, 92, 246, 0.15) 0%, transparent 35%),
+                radial-gradient(circle at 100% 100%, rgba(16, 185, 129, 0.1) 0%, transparent 35%);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /*--- Navigation Bar ---*/
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px 5%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #558c5b;
+        }
+
+        .logo span1 {
+            color: #44d558;
+        }
+
+        .nav-menu-container {
+            position: relative;
+        }
+
+        .menu-icon {
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-dim);
+            padding: 5px 10px;
+            transition: 0.3s;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: #1e293b;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            width: 160px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+        }
+
+        .dropdown-menu.active {
+            display: flex;
+            animation: shutterDown 0.3s ease-out;
+        }
+
+        @keyframes shutterDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dropdown-menu button {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            text-align: left;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dropdown-menu button:hover {
+            background: var(--primary);
+        }
+
+        .dropdown-menu button:last-child {
+            border-bottom: none;
+        }
+
+        /*--- Pop-up Modal Style ---*/
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 400px;
+            width: 90%;
+            border: 1px solid var(--primary);
+            position: relative;
+            text-align: center;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: var(--text-dim);
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .modal-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* Contact List with Copy */
+        .contact-item {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+        }
+
+        .contact-info {
+            font-size: 14px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .contact-info i {
+            color: var(--primary);
+            width: 20px;
+            margin-right: 5px;
+        }
+
+        .contact-info span {
+            display: block;
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+
+        .btn-mini-copy {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-mini-copy:hover {
+            background: var(--secondary);
+        }
+
+        /*--- Main Content Styles ---*/
+        .wrapper {
+            padding: 100px 20px 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 550px;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 30px;
+            margin-bottom: 25px;
+            transition: 0.3s;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .badge-fun {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .badge-pro {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .share-box {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 16px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border);
+            margin: 20px 0;
+        }
+
+        .share-box input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--primary);
+            padding-left: 10px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .btn-copy {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-copy:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .cta-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            color: white;
+            text-decoration: none;
+            padding: 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 18px;
+            transition: 0.4s;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        #toast {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            color: #000;
+            padding: 12px 25px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            opacity: 0;
+            transition: 0.4s;
+            z-index: 3000;
+            pointer-events: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">Discover <span1>Us</span1>
+        </div>
+        <div class="nav-menu-container">
+            <i class="fas fa-ellipsis-v menu-icon" onclick="toggleMenu()"></i>
+            <div class="dropdown-menu" id="dropdownMenu">
+                <button onclick="showModal('aboutModal')"><i class="fas fa-user-circle"></i> About us</button>
+                <button onclick="showModal('contactModal')"><i class="fas fa-envelope"></i> Contract</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="wrapper">
+        <div class="main-container">
+            <div class="section-card">
+                <span class="badge badge-fun"><i class="fas fa-ghost"></i> বিনোদনমূলক প্রজেক্ট</span>
+                <h2> মজার জন্য তৈরি ডেমো সাইট – সিরিয়াসলি নেবেন না!</h2>
+                <p>
+                    👉 এই সাইটটি শুধুমাত্র বিনোদনের উদ্দেশ্যে তৈরি। এখানে ব্যবহৃত সব তথ্য ডেমো হিসেবে দেওয়া হয়েছে এবং এর
+                    সাথে কোনো অফিসিয়াল বা বাস্তব সংযোগ নেই।
+                    <br>👉 তাই কেউ এটাকে সিরিয়াসভাবে গ্রহণ করবেন না।
+                    <br>😊 আপনার বন্ধুদের সাথে শেয়ার করুন এবং একসাথে মজাটা উপভোগ করুন!
+                </p>
+                <div class="share-box">
+                    <input type="text" value="https://yourwebsite.com" id="linkInput" readonly>
+                    <button class="btn-copy" onclick="copyValue('https://yourwebsite.com')">
+                        <i class="fas fa-copy"></i> copy
+                    </button>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <span class="badge badge-pro"><i class="fas fa-rocket"></i> প্রফেশনাল ক্যারিয়ার গাইড</span>
+                <h2>অনলাইনে ক্যারিয়ার গড়তে চান?</h2>
+                <p style="margin-bottom: 15px;">দেখুন, আপনি এই লিংকে ক্লিক করায় আমি কিন্তু <strong>অল্প কিছু টাকা ইনকাম
+                        করে নিলাম!</strong> ঠিক একইভাবে আপনিও নিজের একটি "ফানি বা প্রফেশনাল" ওয়েবসাইট বানিয়ে স্মার্টলি
+                    ইনকাম করতে পারেন।</p>
+
+                <p style="margin-bottom: 20px; color: var(--text-dim);">বেকারত্বের বোঝা ঝেড়ে ফেলে নিজের এবং পরিবারের হাল
+                    ধরতে একটি <strong>অটোমেটেড ইনকাম সাইট</strong> হতে পারে আপনার সেরা সিদ্ধান্ত। এছাড়া আপনি আমাদের সাথে
+                    মার্কেটিং করেও আয় করতে পারেন।</p>
+
+                <button onclick="showModal('contactModal')" class="cta-button">
+                    <i class="fas fa-comments"></i> সরাসরি আলোচনা করুন
+                </button>
+            </div>
+
+            <footer>© ২০২৬ প্রিমিয়াম ডিজিটাল সলিউশন</footer>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="aboutModal">
+        <div class="modal-content">
+            <i class="fas fa-times close-modal" onclick="closeModal('aboutModal')"></i>
+            <h3>আমাদের লক্ষ্য</h3>
+            <p style="font-size: 14px; color: var(--text-dim);">
+                আমরা ডিজিটাল সলিউশন এক্সপার্ট। আমাদের মূল লক্ষ্য হলো সাধারণ মানুষকে দক্ষ করে তোলা এবং অটোমেটেড সিস্টেমের
+                মাধ্যমে অনলাইন থেকে আয়ের সঠিক পথ দেখানো। আজই যুক্ত হোন আমাদের সাথে।
+            </p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-content">
+            <i class="fas fa-times close-modal" onclick="closeModal('contactModal')"></i>
+            <h3>যোগাযোগ করুন</h3>
+
+            <div class="contact-item">
+                <div class="contact-info">
+                    <span><i class="fab fa-whatsapp"></i> WhatsApp</span>
+                    +880 1762-862842
+                </div>
+                <button class="btn-mini-copy" onclick="copyValue('+8801XXXXXXXXX')">copy</button>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-info">
+                    <span><i class="fas fa-envelope"></i> Email</span>
+                    codenestbdt@gmail.com
+                </div>
+                <button class="btn-mini-copy" onclick="copyValue('support@yourweb.com')">coyy</button>
+            </div>
+
+            <div class="contact-item"
+                style="border-bottom: none; background: none; border: none; padding: 0; margin-top: 15px;">
+                <div class="contact-info" style="width: 100%; text-align: center;">
+                    <i class="fas fa-map-marker-alt"></i> ঢাকা, বাংলাদেশ
+                </div>
+            </div>
+
+            <a href="https://wa.me/8801XXXXXXXXX" target="_blank"
+                style="text-decoration: none; display: block; margin-top: 15px; color: var(--accent); font-weight: bold;">সরাসরি
+                হোয়াটসঅ্যাপ মেসেজ দিন</a>
+        </div>
+    </div>
+
+    <div id="toast">✅ সফলভাবে কপি করা হয়েছে!</div>
+
+    <script>
+        // Toggle Dropdown
+        function toggleMenu() {
+            document.getElementById("dropdownMenu").classList.toggle("active");
+        }
+
+        window.onclick = function (event) {
+            if (!event.target.matches('.menu-icon')) {
+                const dropdown = document.getElementById("dropdownMenu");
+                if (dropdown && dropdown.classList.contains('active')) dropdown.classList.remove('active');
+            }
+        }
+
+        // Modal Functions
+        function showModal(id) {
+            document.getElementById(id).style.display = "flex";
+            const dropdown = document.getElementById("dropdownMenu");
+            if (dropdown) dropdown.classList.remove("active");
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+        }
+
+        // Universal Copy Function
+        function copyValue(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById("toast");
+                toast.style.opacity = "1";
+                setTimeout(() => { toast.style.opacity = "0"; }, 2000);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

