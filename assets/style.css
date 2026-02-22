@@ -1,460 +1,497 @@
- /* ========================================
-           GLOBAL DESIGN SYSTEM - GOVT PORTAL 2026
-           ========================================
-        */
- :root {
-     --govt-green: #006a4e;
-     --govt-red: #f42a41;
-     --deep-green: #004d39;
-     --btn-gradient: linear-gradient(135deg, #006a4e 0%, #009669 100%);
-     --glass: rgba(255, 255, 255, 0.98);
-     --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
- }
+/* ========================================
+   GLOBAL DESIGN SYSTEM - TECH PORTAL 2026
+   ========================================
+   Theme: Deep Black & Electric Blue Premium
+*/
 
- * {
-     box-sizing: border-box;
-     -webkit-tap-highlight-color: transparent;
-     margin: 0;
-     padding: 0;
- }
+:root {
+    /* কালার প্যালেট - ব্ল্যাক এবং নীলের প্রিমিয়াম কম্বিনেশন */
+    --bg-dark: #000000;           /* পিউর ব্ল্যাক ব্যাকগ্রাউন্ড */
+    --surface-dark: #0f172a;      /* গাঢ় ব্লু-ব্ল্যাক সারফেস */
+    --card-bg: #1e293b;           /* কার্ড ব্যাকগ্রাউন্ড */
+    --electric-blue: #2563eb;     /* মেইন ইলেকট্রিক ব্লু */
+    --neon-glow: #3b82f6;         /* গ্লোয়িং ব্লু */
+    --text-primary: #ffffff;      /* সাদা টেক্সট */
+    --text-secondary: #94a3b8;    /* ধূসর টেক্সট */
+    --govt-red: #ef4444;          /* এরর বা হাইলাইটের জন্য লাল */
+    
+    /* গ্রেডিয়েন্ট এবং শ্যাডো */
+    --btn-gradient: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    --blue-glow: 0 0 15px rgba(37, 99, 235, 0.3);
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
- body {
-     font-family: 'Hind Siliguri', sans-serif;
-     background: #f3f6f8;
-     color: #2d3748;
-     min-height: 100vh;
-     line-height: 1.6;
-     padding-top: 80px;
- }
+/* --- বেসিক রিসেট --- */
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    margin: 0;
+    padding: 0;
+}
 
- /* --- ১. নেভিগেশন বার (আধুনিক লুক) --- */
- .navbar {
-     background: #e0e4e8;
-     height: 70px;
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-     padding: 0 6%;
-     position: fixed;
-     top: 0;
-     width: 100%;
-     z-index: 1001;
-     border-bottom: 2px solid #396042;
-     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
- }
+body {
+    font-family: 'Hind Siliguri', 'Inter', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+    padding-top: 80px;
+    overflow-x: hidden;
+}
 
- .nav-logo {
-     display: flex;
-     align-items: center;
-     text-decoration: none;
-     gap: 12px;
- }
+/* --- ১. নেভিগেশন বার (ব্ল্যাক গ্লাস ইফেক্ট) --- */
+.navbar {
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(15px);
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 6%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1001;
+    border-bottom: 2px solid var(--electric-blue);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
 
- .nav-logo img {
-     width: 45px;
-     height: 45px;
- }
+.nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 15px;
+}
 
- .logo-text .main {
-     font-weight: 700;
-     color: var(--govt-green);
-     font-size: 17px;
-     display: block;
- }
+.nav-logo img {
+    width: 45px;
+    height: 45px;
+    filter: drop-shadow(0 0 8px var(--electric-blue));
+}
 
- .logo-text .sub {
-     font-size: 10px;
-     color: var(--govt-red);
-     font-weight: 600;
-     text-transform: uppercase;
- }
+.logo-text .main {
+    font-weight: 800;
+    color: var(--text-primary);
+    font-size: 18px;
+    display: block;
+    letter-spacing: 0.5px;
+}
 
- /* --- ২. হিরো সেকশন --- */
- .hero-area {
-     text-align: center;
-     padding: 30px 20px;
-     background: #ffffff;
-     margin-bottom: 11px;
- }
+.logo-text .sub {
+    font-size: 10px;
+    color: var(--neon-glow);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
 
- .hero-badge {
-     background: #f3f4f5;
-     color: var(--govt-green);
-     padding: 6px 15px;
-     border-radius: 50px;
-     font-size: 13px;
-     font-weight: 700;
-     display: inline-flex;
-     align-items: center;
-     gap: 6px;
-     margin-bottom: 15px;
-     border: 1px solid #b2f5ea;
- }
+/* --- ২. হিরো সেকশন --- */
+.hero-area {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(to bottom, #0f172a, #000000);
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(37, 99, 235, 0.2);
+}
 
- .hero-area h1 {
-     font-size: 28px;
-     font-weight: 800;
-     color: #1a202c;
-     line-height: 1.2;
- }
+.hero-badge {
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--neon-glow);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(37, 99, 235, 0.4);
+    box-shadow: var(--blue-glow);
+}
 
- /* --- ৩. মেইন কার্ড ও অপারেটর গ্রিড --- */
- .main-card {
-     background: white;
-     margin: 0 15px 30px;
-     padding: 25px;
-     border-radius: 24px;
-     box-shadow: var(--card-shadow);
-     position: relative;
- }
+.hero-area h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text-white);
+    line-height: 1.3;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
 
- .step-title {
-     font-size: 16px;
-     font-weight: 700;
-     color: #2d3748;
-     margin-bottom: 15px;
-     display: flex;
-     align-items: center;
-     gap: 8px;
- }
+/* --- ৩. মেইন কার্ড ও অপারেটর গ্রিড --- */
+.main-card {
+    background: var(--surface-dark);
+    margin: 0 20px 40px;
+    padding: 35px 25px;
+    border-radius: 30px;
+    box-shadow: var(--card-shadow);
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
 
- .operator-grid {
-     display: grid;
-     grid-template-columns: repeat(2, 1fr);
-     gap: 12px;
-     margin-bottom: 25px;
- }
+.step-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
- .op-card {
-     border: 2px solid #f1f5f9;
-     border-radius: 18px;
-     padding: 15px;
-     text-align: center;
-     cursor: pointer;
-     transition: var(--transition);
- }
+.step-title::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background: var(--electric-blue);
+    border-radius: 10px;
+    display: inline-block;
+}
 
- .op-card img {
-     width: 45px;
-     height: 45px;
-     margin-bottom: 8px;
- }
+.operator-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
 
- .op-card span {
-     display: block;
-     font-weight: 700;
-     font-size: 14px;
- }
+.op-card {
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
 
- .op-card.selected {
-     border-color: var(--govt-green);
-     background: #f0fff4;
-     transform: translateY(-3px);
- }
+.op-card img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    filter: brightness(0.9);
+}
 
- /* --- ৪. ইনপুট ও বাটন ডিজাইন (প্রিমিয়াম) --- */
- .phone-input-container {
-     margin-top: 20px;
-     display: none;
- }
+.op-card span {
+    display: block;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--text-secondary);
+}
 
- .input-wrapper {
-     position: relative;
-     margin-bottom: 20px;
- }
+.op-card:hover {
+    background: rgba(37, 99, 235, 0.05);
+    border-color: rgba(37, 99, 235, 0.3);
+}
 
- .phone-input {
-     width: 100%;
-     height: 60px;
-     padding: 0 20px 0 55px;
-     border: 2px solid #e2e8f0;
-     border-radius: 15px;
-     font-size: 18px;
-     font-weight: 700;
-     transition: var(--transition);
-     outline: none;
- }
+.op-card.selected {
+    border-color: var(--electric-blue);
+    background: rgba(37, 99, 235, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(37, 99, 235, 0.2);
+}
 
- .phone-input:focus {
-     border-color: var(--govt-green);
-     box-shadow: 0 0 0 4px rgba(0, 106, 78, 0.1);
- }
+.op-card.selected span {
+    color: var(--text-primary);
+}
 
- .input-icon {
-     position: absolute;
-     left: 20px;
-     top: 50%;
-     transform: translateY(-50%);
-     color: var(--govt-green);
-     font-size: 18px;
- }
+/* --- ৪. ইনপুট ডিজাইন --- */
+.phone-input-container {
+    margin-top: 25px;
+    display: none;
+}
 
- .submit-btn {
-     background: var(--btn-gradient);
-     color: white;
-     border: none;
-     height: 60px;
-     width: 100%;
-     border-radius: 15px;
-     font-size: 17px;
-     font-weight: 700;
-     cursor: pointer;
-     transition: var(--transition);
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     gap: 10px;
-     box-shadow: 0 8px 20px rgba(0, 106, 78, 0.25);
- }
+.input-wrapper {
+    position: relative;
+    margin-bottom: 25px;
+}
 
- .submit-btn:hover {
-     opacity: 0.9;
-     transform: scale(1.02);
- }
+.phone-input {
+    width: 100%;
+    height: 65px;
+    padding: 0 20px 0 60px;
+    background: #000000;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    transition: var(--transition);
+    outline: none;
+}
 
- .submit-btn:active {
-     transform: scale(0.98);
- }
+.phone-input:focus {
+    border-color: var(--electric-blue);
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.2);
+    background: #050505;
+}
 
+.input-icon {
+    position: absolute;
+    left: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--electric-blue);
+    font-size: 20px;
+}
 
- #videoArea {
-     display: none;
-     /* জাভাস্ক্রিপ্ট দিয়ে এটি flex করবেন */
-     position: fixed;
-     inset: 0;
-     background: rgba(0, 0, 0, 0.8);
-     backdrop-filter: blur(5px);
-     z-index: 9999;
-     align-items: center;
-     justify-content: center;
-     padding: 20px;
-     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
- }
+/* --- ৫. সাবমিট বাটন --- */
+.submit-btn {
+    background: var(--btn-gradient);
+    color: white;
+    border: none;
+    height: 65px;
+    width: 100%;
+    border-radius: 18px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+}
 
- .video-box {
-     background: rgb(243, 242, 242);
-     width: 100%;
-     max-width: 420px;
-     border-radius: 25px;
-     padding: 30px;
-     text-align: center;
-     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-     animation: popUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
- }
+.small-font-btn {
+    font-size: 15px !important;
+}
 
- @keyframes popUp {
-     from {
-         transform: scale(0.8);
-         opacity: 0;
-     }
+.submit-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+}
 
-     to {
-         transform: scale(1);
-         opacity: 1;
-     }
- }
+.submit-btn:active {
+    transform: scale(0.97);
+}
 
- /* টিক চিহ্ন অ্যানিমেশন */
- .success-icon {
-     width: 70px;
-     height: 70px;
-     margin: 0 auto 15px;
- }
+/* --- ভিডিও সেকশন পপআপ --- */
+#videoArea {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(12px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
 
- .checkmark__circle {
-     stroke-dasharray: 166;
-     stroke-dashoffset: 166;
-     stroke-width: 2;
-     stroke: #4caf50;
-     fill: none;
-     animation: stroke 0.6s forwards;
- }
+.video-box {
+    background: var(--surface-dark);
+    width: 100%;
+    max-width: 440px;
+    border-radius: 30px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(37, 99, 235, 0.3);
+    animation: popUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
- .checkmark__check {
-     transform-origin: 50% 50%;
-     stroke-dasharray: 48;
-     stroke-dashoffset: 48;
-     stroke: #4caf50;
-     stroke-width: 3;
-     animation: stroke 0.3s 0.6s forwards;
- }
+@keyframes popUp {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
 
- @keyframes stroke {
-     100% {
-         stroke-dashoffset: 0;
-     }
- }
+/* টিক চিহ্ন এনিমেশন (ব্লু থিম) */
+.success-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+}
 
-   .content-text h2 {
-    color: #111827; /* Deep charcoal black for a bold look */
-    margin: 40px 0 16px 0;
-    font-size: 25px; /* Large and impactful */
-    font-weight: 800; /* Extra bold for clear hierarchy */
-    line-height: 1.2;
-    letter-spacing: -0.02em; /* Slightly tighter for a modern aesthetic */
+.checkmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke: var(--electric-blue);
+    fill: none;
+    animation: stroke 0.6s forwards;
+}
+
+.checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    stroke: var(--electric-blue);
+    stroke-width: 3;
+    animation: stroke 0.3s 0.6s forwards;
+}
+
+@keyframes stroke {
+    100% { stroke-dashoffset: 0; }
+}
+
+/* টেক্সট কন্টেন্ট */
+.content-text h2 {
+    color: var(--text-primary);
+    margin: 30px 0 15px 0;
+    font-size: 26px;
+    font-weight: 800;
 }
 
 .content-text p {
-    color: #374151; /* Dark gray for high contrast but low eye-strain */
-    font-size: 12px; /* Standard reading size for modern web */
-    margin-bottom: 24px;
-    line-height: 1.75; /* Optimal spacing for long-form reading */
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 25px;
 }
 
-/* Optional: Adding a hover effect to h2 for interactivity */
-.content-text h2:hover {
-    color: #2563eb; /* Subtle blue shift on hover */
-    transition: color 0.3s ease;
+.video-wrapper {
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: #000;
 }
- 
 
- /* ভিডিও কন্টেইনার */
- .video-wrapper {
-     border-radius: 15px;
-     overflow: hidden;
-     margin-bottom: 20px;
-     border: 1px solid #eee;
- }
+/* অ্যাড সেকশন */
+.ad-space {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin: 15px auto;
+    padding: 8px;
+    /* এডের সাইজ অনুযায়ী কন্টেইনার লক করা */
+    width: 340px; 
+    min-height: 85px; 
+    display: block;
+    text-align: center;
+    overflow: hidden;
+}
 
- /* বাটন স্টাইল */
- .submit-btn {
-     background: #007bff;
-     color: rgb(255, 255, 255);
-     border: none;
-     padding: 12px 0;
-     width: 100%;
-     border-radius: 12px;
-     font-size: 16px;
-     font-weight: 600;
-     cursor: pointer;
-     transition: background 0.3s;
- }
+.ad-label {
+    font-size: 10px;
+    color: #94a3b8;
+    display: block;
+    margin-bottom: 5px;
+    line-height: 1;
+}
 
- .submit-btn:hover {
-     background: #0056b3;
- }
+/* আইফ্রেম যেন বাইরে না যায় */
+.ad-space iframe {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+/* --- ৬. ফুটার সেকশন --- */
+.simple-footer {
+    background: #000000;
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 60px;
+}
 
+.footer-logo {
+    width: 45px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 5px var(--electric-blue));
+}
 
- .ad-space {
-     background: #f8fafc;
-     border: 2px dashed #cbd5e0;
-     border-radius: 12px;
-     margin: 20px 0;
-     padding: 15px;
-     text-align: center;
-     min-height: 100px;
- }
+.footer-text {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
 
- /* --- ৬. সিম্পল ফুটার --- */
- .simple-footer {
-     background: white;
-     padding: 30px 20px;
-     text-align: center;
-     border-top: 1px solid #e2e8f0;
-     margin-top: 40px;
- }
+.footer-links {
+    margin-top: 15px;
+}
 
- .footer-logo {
-     width: 40px;
-     margin-bottom: 10px;
- }
+.footer-links a {
+    color: var(--electric-blue);
+    text-decoration: none;
+    font-size: 13px;
+    margin: 0 12px;
+    font-weight: 700;
+    transition: var(--transition);
+}
 
- .footer-text {
-     font-size: 13px;
-     color: #718096;
-     margin-bottom: 5px;
- }
+.footer-links a:hover {
+    color: var(--text-primary);
+    text-shadow: 0 0 10px var(--electric-blue);
+}
 
- .footer-links {
-     margin-top: 10px;
- }
+/* মেসেজ বক্স */
+.message-box {
+    display: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 15px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-align: center;
+}
 
- .footer-links a {
-     color: var(--govt-green);
-     text-decoration: none;
-     font-size: 12px;
-     margin: 0 8px;
-     font-weight: 600;
- }
+.error {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
 
- /* এনিমেশন */
- @keyframes fadeIn {
-     from {
-         opacity: 0;
-         transform: translateY(10px);
-     }
+.success {
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--neon-glow);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+}
 
-     to {
-         opacity: 1;
-         transform: translateY(0);
-     }
- }
+/* কাউন্টডাউন */
+#countdown {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--electric-blue);
+    padding: 15px;
+    background: rgba(37, 99, 235, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    margin-top: 15px;
+    text-align: center;
+    display: none;
+}
 
- .animate-fade {
-     animation: fadeIn 0.4s ease forwards;
- }
+.success-msg {
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.1);
+    border: 1px solid rgba(74, 222, 128, 0.2);
+    padding: 15px;
+    border-radius: 12px;
+    animation: popIn 0.5s ease;
+}
 
- /* মেসেজ বক্স */
- .message-box {
-     display: none;
-     padding: 12px;
-     border-radius: 10px;
-     font-size: 14px;
-     margin-bottom: 15px;
-     font-weight: 600;
- }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
- .error {
-     background: #fff5f5;
-     color: #c53030;
- }
+.animate-fade {
+    animation: fadeIn 0.5s ease forwards;
+}
 
- .success {
-     background: #f0fff4;
-     color: #2f855a;
- }
+/* অতিরিক্ত ডিটেইলিং যাতে কোড প্রফেশনাল হয় */
+::selection {
+    background: var(--electric-blue);
+    color: white;
+}
 
- /* কাউন্টডাউন টেক্সটের স্টাইল */
- #countdown {
-     font-size: 18px;
-     font-weight: bold;
-     padding: 10px;
-     border-radius: 8px;
-     transition: all 0.3s ease;
-     text-align: center;
-     margin-top: 10px;
- }
+::-webkit-scrollbar {
+    width: 8px;
+}
 
- /* সফল হওয়ার পর সুন্দর এনিমেশনসহ স্টাইল */
- .success-msg {
-     color: #155724;
-     background-color: #d4edda;
-     border: 1px solid #c3e6cb;
-     padding: 12px;
-     border-radius: 8px;
-     display: inline-block;
-     animation: popIn 0.5s ease;
- }
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
 
- /* পালস এনিমেশন (অপেক্ষা করার সময়) */
- .waiting-msg {
-     color: #856404;
-     background-color: #fff3cd;
-     padding: 10px;
-     border-radius: 8px;
-     border: 1px solid #ffeeba;
- }
+::-webkit-scrollbar-thumb {
+    background: var(--surface-dark);
+    border-radius: 10px;
+    border: 2px solid var(--bg-dark);
+}
 
- @keyframes popIn {
-     0% {
-         transform: scale(0.9);
-         opacity: 0;
-     }
-
-     100% {
-         transform: scale(1);
-         opacity: 1;
-     }
- }
+::-webkit-scrollbar-thumb:hover {
+    background: var(--electric-blue);
+}
